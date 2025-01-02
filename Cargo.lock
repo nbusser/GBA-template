@@ -22,13 +22,6 @@ checksum = "ef657dfab802224e671f5818e9a4935f9b1957ed18e58292690cc39e7a4092a3"
 
 [[package]]
 name = "gba"
-version = "0.1.0"
-dependencies = [
- "gba 0.13.3",
-]
-
-[[package]]
-name = "gba"
 version = "0.13.3"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "a1effe6bc7b46495659e4f697b0f4dbdb60b46d6c78e3d8eec7ac88e796fcd2c"
@@ -37,6 +30,13 @@ dependencies = [
  "bracer",
  "bytemuck",
  "voladdress",
+]
+
+[[package]]
+name = "gba-template"
+version = "0.1.0"
+dependencies = [
+ "gba",
 ]
 
 [[package]]
