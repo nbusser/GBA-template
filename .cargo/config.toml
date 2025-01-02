@@ -1,22 +1,12 @@
 [unstable]
-build-std = ["core", "alloc"]
-build-std-features = ["compiler-builtins-mem"]
+build-std = ["core"]
 
 [build]
 target = "thumbv4t-none-eabi"
 
 [target.thumbv4t-none-eabi]
 rustflags = [
-    "-Clink-arg=-Tgba.ld",
-    "-Ctarget-cpu=arm7tdmi",
-    "-Cforce-frame-pointers=yes",
+  "-Clinker=arm-none-eabi-ld", # uses the ARM linker
+  "-Clink-arg=-Tlinker_scripts/mono_boot.ld", # sets the link script
 ]
-runner = ["mgba-qt", "-C", "logToStdout=1", "-C", "logLevel.gba.debug=127"]
-
-[target.armv4t-none-eabi]
-rustflags = [
-    "-Clink-arg=-Tgba.ld",
-    "-Ctarget-cpu=arm7tdmi",
-    "-Cforce-frame-pointers=yes",
-]
-runner = ["mgba-qt", "-C", "logToStdout=1", "-C", "logLevel.gba.debug=127"]
+runner = ["mgba", "-C", "logToStdout=1", "-C", "logLevel.gba.debug=127"]
