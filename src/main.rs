@@ -6,7 +6,13 @@
 #![no_std]
 #![no_main]
 
-use gba::prelude::*;
+use gba::{
+    bios::VBlankIntrWait,
+    mmio::{DISPCNT, DISPSTAT, IE, IME, KEYINPUT, VIDEO3_VRAM},
+    prelude::{GbaCell, IrqBits},
+    video::{video3_clear_to, Color, DisplayControl, DisplayStatus, VideoMode},
+    RUST_IRQ_HANDLER,
+};
 
 const SCREEN_WIDTH: u16 = 240;
 const SCREEN_HEIGHT: u16 = 160;
